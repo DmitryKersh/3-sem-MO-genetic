@@ -5,18 +5,18 @@
 #include "Entity.h"
 #include <cmath>
 
-void Entity::cross_over(Entity &other) {
+void Entity::exchange_gens(Entity &other) {
     // cross over
 }
 
-double Entity::fit_func() {
+double Entity::fit_func() const {
     return sin(_x) * sin(_y) * (1 + _x * _x + _y * _y);
 }
 
-double Entity::get_x() {
+double Entity::get_x() const {
     return _x;
 }
 
-double Entity::get_y() {
+double Entity::get_y() const {
     return _y;
 }

@@ -12,12 +12,12 @@ class Entity {
 public:
     Entity(double x, double y) : _x(x), _y(y) {}
 
-    void cross_over(Entity& other);
+    void exchange_gens(Entity& other);
 
-    double fit_func();
+    double fit_func() const;
 
-    double get_x();
-    double get_y();
+    double get_x() const;
+    double get_y() const;
 };
 
 
