@@ -14,14 +14,16 @@ using std::endl;
 
 class Population {
     vector<Entity> entities;
-    void cross_over();
+    Entity cross_over(size_t first, size_t second);
 public:
     explicit Population(const vector<Entity>& data) : entities(data) {}
 
     double avg_fit();
-    void to_next_generation();
+    vector<Entity> next_generation();
 
     void Print(std::ostream& os);
+
+
 };
 
 
