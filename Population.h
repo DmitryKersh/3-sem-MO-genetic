@@ -14,6 +14,8 @@ class Population {
     vector<Entity> entities;
     void cross_over();
 public:
+    explicit Population(const vector<Entity>& data) : entities(data) {}
+
     double avg_fit();
     void to_next_generation();
 };
