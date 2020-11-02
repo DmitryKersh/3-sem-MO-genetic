@@ -4,9 +4,6 @@
 
 #include <cmath>
 
-inline double fit_func(double x, double y){
-    return sin(x) * sin(y) * (1 + x*x + y*y);
-}
 
 int main() {
 
