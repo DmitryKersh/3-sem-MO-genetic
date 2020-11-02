@@ -7,8 +7,10 @@
 
 #include "Entity.h"
 #include <vector>
+#include <iostream>
 
 using std::vector;
+using std::endl;
 
 class Population {
     vector<Entity> entities;
@@ -18,6 +20,8 @@ public:
 
     double avg_fit();
     void to_next_generation();
+
+    void Print(std::ostream& os);
 };
 
 

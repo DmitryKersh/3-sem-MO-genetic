@@ -10,6 +10,7 @@ class Entity {
     double _x;
     double _y;
 public:
+    Entity() : _x(0.0), _y(0.0) {}
     Entity(double x, double y) : _x(x), _y(y) {}
 
     void exchange_gens(Entity& other);

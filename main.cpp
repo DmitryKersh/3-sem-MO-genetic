@@ -37,6 +37,8 @@ int main() {
 
     Population p(random_entities(4, range_x, range_y));
 
+    p.Print(std::cout);
+
     return 0;
 }
 

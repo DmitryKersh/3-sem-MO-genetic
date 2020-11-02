@@ -11,3 +11,12 @@ double Population::avg_fit() {
     }
     return res / entities.size();
 }
+
+void Population::Print(std::ostream &os) {
+    for (size_t i = 0; i < entities.size(); i++){
+        os << "Entity #" << i + 1 << endl
+           << "X = " << entities[i].get_x() << endl
+           << "Y = " << entities[i].get_y() << endl
+           << "Fit = " << entities[i].fit_func() << endl << endl;
+    }
+}
