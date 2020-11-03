@@ -36,7 +36,7 @@ int main() {
 
     p.Print(std::cout);
 
-    for (size_t i = 0; i < 11; i++){
+    for (size_t i = 0; i < 100; i++){
         p.next_generation();
     }
 

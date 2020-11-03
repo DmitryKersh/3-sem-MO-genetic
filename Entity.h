@@ -29,9 +29,7 @@ public:
     void mutate();
 };
 
-bool operator< (const Entity& lhs, const Entity& rhs){
-    return lhs.fit_func() < rhs.fit_func();
-}
+bool operator< (const Entity& lhs, const Entity& rhs);
 
 double uint_to_range(uint u, Range r);
 uint range_to_uint(double d, Range r);

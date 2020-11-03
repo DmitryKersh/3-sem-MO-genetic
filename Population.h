@@ -19,11 +19,9 @@ public:
     explicit Population(const vector<Entity>& data) : entities(data) {}
 
     double avg_fit();
-    vector<Entity> next_generation();
+    void next_generation();
 
     void Print(std::ostream& os);
-
-
 };
 
 
