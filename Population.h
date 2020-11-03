@@ -24,5 +24,4 @@ public:
     void Print(std::ostream& os, const std::string& desc) const;
 };
 
-
 #endif //INC_3_SEM_MO_GENETIC_POPULATION_H

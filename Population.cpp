@@ -39,7 +39,7 @@ void Population::next_generation() {
     new_gen[3] = cross_over(2, 0);
     */
 
-    size_t selection_size = (2 + sqrt(-1.0 + 4.0 * entities.size())) / 2;
+    size_t selection_size = ceil((1.0 + sqrt(1.0 + 4.0 * entities.size())) / 2.0);
     std::cerr << selection_size << "'";
     /*
     while (selection_size * (selection_size - 1) < entities.size()){

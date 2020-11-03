@@ -5,9 +5,6 @@
 #include <ctime>
 #include "Population.h"
 
-
-
-
 // random double in range
 double rdir(Range r){
     // return r.min + ((r.max - r.min) * (static_cast<double>(rand()) / RAND_MAX));
@@ -16,15 +13,11 @@ double rdir(Range r){
 
 vector<Entity> random_entities(size_t size, Range range_x, Range range_y){
     vector<Entity> res(size);
-
     for (auto & e : res){
         e = Entity(rdir(range_x), rdir(range_y));
     }
-
     return res;
 }
-
-
 
 int main() {
     srand(time(0));
@@ -53,13 +46,14 @@ int main() {
     try {
         Population p(random_entities(population_size, range_x, range_y), mutation_chance);
 
-        p.Print(std::cout, "GEN #1");
+        //p.Print(std::cout, "GEN #1");
 
         for (size_t i = 0; i < gen_count; i++) {
+            p.Print(std::cout, "GEN #" + std::to_string(i + 1));
             p.next_generation();
         }
 
-        p.Print(std::cout, "GEN #" + std::to_string(gen_count));
+
     }
     catch (std::runtime_error& e) {
         std::cerr << e.what();
