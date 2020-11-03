@@ -31,16 +31,40 @@ int main() {
     Range range_x = {0.0, 2.0};
     Range range_y = {-2.0, 2.0};
 
+    size_t population_size, gen_count;
+    double mutation_chance;
 
-    Population p(random_entities(4, range_x, range_y));
+    std::cout << "Enter population size (positive int)" << endl;
+    std::cin >> population_size;
+    std::cout << "Enter mutation chance (float in [0;1])" << endl;
+    std::cin >> mutation_chance;
+    std::cout << "Enter number of generations (positive int)" << endl;
+    std::cin >> gen_count;
 
-    p.Print(std::cout);
-
-    for (size_t i = 0; i < 100; i++){
-        p.next_generation();
+    if (population_size > 10000 || mutation_chance > 1.0 || mutation_chance < 0.0 || gen_count > 10000){
+        throw std::runtime_error("Incorrect input. Entered: \nPopulation size = "
+                                 + std::to_string(population_size)
+                                 + "\nMutation chance = "
+                                 + std::to_string(mutation_chance)
+                                 + "\nNumber of generations = "
+                                 + std::to_string(gen_count));
     }
 
-    p.Print(std::cout);
+    try {
+        Population p(random_entities(population_size, range_x, range_y), mutation_chance);
+
+        p.Print(std::cout, "GEN #1");
+
+        for (size_t i = 0; i < gen_count; i++) {
+            p.next_generation();
+        }
+
+        p.Print(std::cout, "GEN #" + std::to_string(gen_count));
+    }
+    catch (std::runtime_error& e) {
+        std::cerr << e.what();
+        return 1;
+    }
 
     return 0;
 }
