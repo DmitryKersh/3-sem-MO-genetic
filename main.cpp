@@ -26,6 +26,7 @@ int main() {
 
     size_t population_size, gen_count;
     double mutation_chance;
+    char config;
 
     std::cout << "Enter population size (positive int)" << endl;
     std::cin >> population_size;
@@ -33,6 +34,8 @@ int main() {
     std::cin >> mutation_chance;
     std::cout << "Enter number of generations (positive int)" << endl;
     std::cin >> gen_count;
+    std::cout << "Enter 'y' to show all generations, else only first and last will be shown" << endl;
+    std::cin >> config;
 
     if (population_size > 10000 || mutation_chance > 1.0 || mutation_chance < 0.0 || gen_count > 10000){
         throw std::runtime_error("Incorrect input. Entered: \nPopulation size = "
@@ -45,15 +48,18 @@ int main() {
 
     try {
         Population p(random_entities(population_size, range_x, range_y), mutation_chance);
-
-        //p.Print(std::cout, "GEN #1");
-
-        for (size_t i = 0; i < gen_count; i++) {
-            p.Print(std::cout, "GEN #" + std::to_string(i + 1));
-            p.next_generation();
+        if (config == 'y'){ // TO SHOW ALL GENERATIONS
+            for (size_t i = 0; i < gen_count; i++) {
+                p.next_generation();
+                p.Print(std::cout, "GEN #" + std::to_string(i));
+            }
+        } else {  // TO SHOW ONLY FIRST AND LAST
+            p.Print(std::cout, "GEN #0");
+            for (size_t i = 0; i < gen_count; i++) {
+                p.next_generation();
+            }
+            p.Print(std::cout, "GEN #" + std::to_string(gen_count));
         }
-
-
     }
     catch (std::runtime_error& e) {
         std::cerr << e.what();

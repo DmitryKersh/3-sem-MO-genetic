@@ -32,20 +32,9 @@ Entity Population::cross_over(size_t first, size_t second) const {
 void Population::next_generation() {
     std::sort(entities.rbegin(), entities.rend());
     vector<Entity> new_gen;
-    /*
-    new_gen[0] = cross_over(0, 1);
-    new_gen[1] = cross_over(0, 2);
-    new_gen[2] = cross_over(1, 0);
-    new_gen[3] = cross_over(2, 0);
-    */
 
     size_t selection_size = ceil((1.0 + sqrt(1.0 + 4.0 * entities.size())) / 2.0);
-    std::cerr << selection_size << "'";
-    /*
-    while (selection_size * (selection_size - 1) < entities.size()){
-        selection_size++;
-    }
-*/
+    //std::cerr << selection_size << "'";
 
 
     for (size_t i = 0; i < selection_size; i++){
@@ -63,8 +52,7 @@ void Population::next_generation() {
         }
     }
 
-    //std::sort(new_gen.rbegin(), new_gen.rend());
+    std::sort(new_gen.rbegin(), new_gen.rend());
     new_gen.resize(entities.size());
     entities = new_gen;
-
 }

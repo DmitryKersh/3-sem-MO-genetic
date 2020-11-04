@@ -5,7 +5,7 @@
 #include "Entity.h"
 
 double Entity::fit_func() const {
-    return sin(_x) * sin(_y) * (1 + _x * _x + _y * _y);
+    return sin(_x) * sin(_y) / (1 + _x * _x + _y * _y);
 }
 
 double Entity::get_x() const {

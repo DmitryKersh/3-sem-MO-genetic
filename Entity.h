@@ -5,6 +5,8 @@
 #ifndef INC_3_SEM_MO_GENETIC_ENTITY_H
 #define INC_3_SEM_MO_GENETIC_ENTITY_H
 
+typedef unsigned int uint;
+
 #include <cmath>
 #include <cstdint>
 
