@@ -48,7 +48,7 @@ void Population::next_generation() {
 
     for (auto & e : new_gen){
         if (rand() < RAND_MAX * mutation_chance) {
-            e.mutate();
+            e.mutate(range_x, range_y);
         }
     }
 

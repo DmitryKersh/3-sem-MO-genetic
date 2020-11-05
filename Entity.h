@@ -5,7 +5,9 @@
 #ifndef INC_3_SEM_MO_GENETIC_ENTITY_H
 #define INC_3_SEM_MO_GENETIC_ENTITY_H
 
-typedef unsigned int uint;
+#include <cstdint>
+
+typedef uint32_t uint;
 
 #include <cmath>
 #include <cstdint>
@@ -28,7 +30,7 @@ public:
     double get_x() const;
     double get_y() const;
 
-    void mutate();
+    void mutate(const Range& range_x, const Range& range_y);
 };
 
 bool operator< (const Entity& lhs, const Entity& rhs);

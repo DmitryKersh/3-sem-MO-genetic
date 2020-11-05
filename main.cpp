@@ -8,7 +8,7 @@
 // random double in range
 double rdir(Range r){
     // return r.min + ((r.max - r.min) * (static_cast<double>(rand()) / RAND_MAX));
-    return uint_to_range(rand(), r);
+    return uint_to_range(2 * rand(), r);
 }
 
 vector<Entity> random_entities(size_t size, Range range_x, Range range_y){
@@ -47,14 +47,15 @@ int main() {
     }
 
     try {
-        Population p(random_entities(population_size, range_x, range_y), mutation_chance);
+        Population p(random_entities(population_size, range_x, range_y), mutation_chance, range_x, range_y);
+        p.Print(std::cout, "GEN #0");
         if (config == 'y'){ // TO SHOW ALL GENERATIONS
             for (size_t i = 0; i < gen_count; i++) {
                 p.next_generation();
-                p.Print(std::cout, "GEN #" + std::to_string(i));
+                p.Print(std::cout, "GEN #" + std::to_string(i + 1));
             }
         } else {  // TO SHOW ONLY FIRST AND LAST
-            p.Print(std::cout, "GEN #0");
+
             for (size_t i = 0; i < gen_count; i++) {
                 p.next_generation();
             }

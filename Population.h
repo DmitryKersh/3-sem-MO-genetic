@@ -13,11 +13,14 @@ using std::vector;
 using std::endl;
 
 class Population {
+    Range range_x;
+    Range range_y;
     vector<Entity> entities;
     double mutation_chance;
     Entity cross_over(size_t first, size_t second) const;
 public:
-    Population(const vector<Entity>& data, double mc) : entities(data), mutation_chance(mc) {}
+    Population(const vector<Entity>& data, double mc, const Range rx, const Range& ry)
+    : entities(data), mutation_chance(mc), range_x(rx), range_y(ry) {}
     double avg_fit() const;
 
     void next_generation();

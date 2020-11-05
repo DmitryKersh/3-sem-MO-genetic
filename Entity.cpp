@@ -6,6 +6,7 @@
 
 double Entity::fit_func() const {
     return sin(_x) * sin(_y) / (1 + _x * _x + _y * _y);
+    //return -log(1 + _x * _x + _y * _y);
 }
 
 double Entity::get_x() const {
@@ -16,9 +17,9 @@ double Entity::get_y() const {
     return _y;
 }
 
-void Entity::mutate() {
-    _x = uint_to_range(range_to_uint(_x, {-2.0, 2.0}) ^ (1u << (rand() % 32)), {0.0, 2.0});
-    _y = uint_to_range(range_to_uint(_y, {-2.0, 2.0}) ^ (1u << (rand() % 32)), {0.0, 2.0});
+void Entity::mutate(const Range& range_x, const Range& range_y) {
+    _x = uint_to_range(range_to_uint(_x, range_x) ^ (1u << (rand() % 24 + 8)), range_x);
+    _y = uint_to_range(range_to_uint(_y, range_y) ^ (1u << (rand() % 24 + 8)), range_y);
 }
 
 double uint_to_range(uint u, Range r){
